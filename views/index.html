@@ -1,0 +1,67 @@
+{% from 'macrofruta.html' import macro_fruta %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <title>Mercado Web</title>
+  </head>
+  <body>
+    
+    <h1 class="text-center">Bienvenido al mercado web, selecciones sus productos</h1>
+    <div class="container">
+      <nav class="navbar navbar-light bg-light narbar-fixed-top">
+        <div class="container-fluid" style="background-color :green">
+          <a class="navbar-brand" href="#" >
+            <img src="carrito.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+          </a>
+        </div>
+      </nav>
+
+      <div class="card-columns" id="galeria">
+        <div class="row">
+          {% for fruta in frutas %}
+            {{ macro_fruta(fruta) }}
+          {% endfor %}
+        </div>
+      </div>  
+
+      <div class="modal fade" id="{{fruta.url}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <button type="button" class="btn-close mr-2" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-dialog Modal–lg modal-dialog-centered" role="document">
+            <img src="{{fruta.url}}" alt="" class="img-fluid round">
+        </div>
+      </div>
+    
+
+
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <script>
+
+      const carrito = [];
+
+      $('.imagen').click(function () {
+        let imgsrc =$(this).attr('src');
+        carrito.push(imgsrc);
+        console.log('carrito', carrito)
+      })
+
+
+    </script>
+  </body>
+</html>

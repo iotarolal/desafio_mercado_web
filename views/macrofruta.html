@@ -1,0 +1,40 @@
+{% macro macro_fruta(fruta) %}
+
+<div class="col-3">
+    <div class="card" style="width: 18rem;">
+        <div class="card">
+            <a href="#" data-toggle="modal" data-targer="#{{fruta.url}}">
+                <h5 class="card-title">{{ fruta.nombre }}</h5>
+                <img src="{{fruta.url}}"  class="card-img-top imagen w-100 d-block">
+            </a>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+
+
+
+
+
+<!--
+<div class="col-3">
+    <div class="card" style="width: 18rem;">
+        <div class="card">
+            galeria.innerHTML += `
+            <a href="#" data-toggle="modal" data-targer="#{{fruta.url}}">
+                <h5 class="card-title">{{ fruta.nombre }}</h5>
+                <img src="{{fruta.url}}" class="card-img-top" alt="...">
+            </a>
+            <div class="modal fade" id="{{fruta.url}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <button type="button" class="btn-close mr-2" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-dialog Modal–lg modal-dialog-centered" role="document">
+                    <img src="{{fruta.url}}" alt="" class="img-fluid round">
+                </div>
+            </div>
+            `
+        </div>
+    </div>
+</div>
+-->
