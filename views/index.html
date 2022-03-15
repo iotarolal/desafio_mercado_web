@@ -1,4 +1,4 @@
-{% from 'macrofruta.html' import macro_fruta %}
+{% from 'macrofruta.html' import macro_fruta, macro_carrito %}
 
 <!doctype html>
 <html lang="en">
@@ -19,12 +19,12 @@
       <nav class="navbar navbar-light bg-light narbar-fixed-top">
         <div class="container-fluid" style="background-color :green">
           <a class="navbar-brand" href="#" >
-            <img src="carrito.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+            <img src="carrito.png" alt="" width="30" height="24" class="d-inline-block align-text-top" data-bs-toggle="modal" data-bs-target="#exampleModal">
           </a>
         </div>
       </nav>
 
-      <div class="card-columns" id="galeria">
+      <div class="card-columns">
         <div class="row">
           {% for fruta in frutas %}
             {{ macro_fruta(fruta) }}
@@ -32,16 +32,27 @@
         </div>
       </div>  
 
-      <div class="modal fade" id="{{fruta.url}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <button type="button" class="btn-close mr-2" data-bs-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="modal-dialog Modal–lg modal-dialog-centered" role="document">
-            <img src="{{fruta.url}}" alt="" class="img-fluid round">
+
+      <!--  Button trigger modal -->
+ 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Productos comprados</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="card-columns">
+              <div class="row" id="frutasmodal">
+                <!-- Acá voy a agregar las frutas -->
+              </div>
+            </div>  
+          </div>
         </div>
       </div>
-    
-
+    </div>
 
 
     </div>
@@ -59,6 +70,11 @@
         let imgsrc =$(this).attr('src');
         carrito.push(imgsrc);
         console.log('carrito', carrito)
+        $("#frutasmodal").append(`
+          <div class="col-4">
+            <img src="${imgsrc}" class="w-100 d-block" >
+          </div>
+        `)
       })
 
 

@@ -43,7 +43,9 @@ const frutas = [
         nombre: 'tomate',
         url:'tomate.png'
     }]
-    
+
+
+
     app.get('/', async (req, res) => {
         res.render('index.html', {frutas})
     })
